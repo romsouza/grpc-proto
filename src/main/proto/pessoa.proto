@@ -1,0 +1,35 @@
+syntax = "proto3";
+package com.exemplo.proto;
+
+option java_multiple_files = true;
+option java_package = "com.exemplo.proto";
+option java_outer_classname = "HelloWorldProto";
+
+service PessoaService {
+  rpc findById(FindByIdRequest) returns (FindByIdResponse) {}
+}
+
+message FindByIdRequest {
+  int64 id = 1;
+}
+
+message FindByIdResponse {
+  int64 id = 1;
+  string nome = 2;
+  string sobrenome = 3;
+  bool vivo = 4;
+  optional string apelido = 5;
+  repeated Animal animais = 6;
+}
+
+message Animal {
+  string nome = 1;
+  int32 idade = 2;
+  Raca raca = 3;
+}
+
+enum Raca {
+  POODLE = 0;
+  DOBERMANN = 1;
+  PINSCHER = 2;
+}
